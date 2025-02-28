@@ -416,11 +416,11 @@ async def get_bus_for(req: Request, user_id: str):
     preferences: dict = user.get("prefs", {"bus_number": None})
 
     toReturn = []
-    if preferences["bus_number"]:
-        toReturn.append(preferences["bus_number"])
+    if "bus_number" in preferences:
+        if preferences["bus_number"]:
+            toReturn.append(preferences["bus_number"])
 
     for bus in buses:
-        print(bus)
         toReturn.append(bus["bus"])
 
     if len(toReturn) == 0:
